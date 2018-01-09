@@ -5,8 +5,69 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Burger_CodingDojo5"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" WindowState="Maximized" Height="350" Width="525" DataContext="{Binding Main, Mode=OneWay, Source={StaticResource Locator}}">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="90" />
+        </Grid.RowDefinitions>
+
+        <ListBox ItemsSource="{Binding MyToys}" SelectedItem="{Binding SelectedToy}" >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border Height="100" Width="186" BorderBrush="Black" BorderThickness="2" CornerRadius="10">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Width="80" VerticalAlignment="Center" Source="{Binding Pic}"  />
+                            <Label VerticalAlignment="Center" Width="120" FontSize="15" Content="{Binding  Name}" />
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <ItemsControl Margin="5" Grid.Column="1" ItemsSource="{Binding SelectedToy.Toys}"  >
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal"></WrapPanel>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border Width="350" Height="200" BorderBrush="Black" BorderThickness="2" CornerRadius="10">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="50" />
+                            </Grid.RowDefinitions>
+
+                            <Image VerticalAlignment="Center" Source="{Binding Pic}" />
+                            <Label FontSize="18" Grid.Column="1" VerticalAlignment="Center" Content="{Binding Name}" />
+                            <Label FontSize="18" Grid.Column="2" VerticalAlignment="Center" Content="{Binding AgeRec}" />
+                            <Button Command="{Binding DataContext.BuyBtnClickedCmd, RelativeSource={RelativeSource AncestorType=ItemsControl}}" CommandParameter="{Binding}" Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="3">Buy</Button>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <ListBox Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding MyWishlist}">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Image Source="{Binding Pic}" Height="80"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </Window>
