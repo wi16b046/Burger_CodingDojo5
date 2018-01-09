@@ -19,7 +19,7 @@
         <ListBox ItemsSource="{Binding MyToys}" SelectedItem="{Binding SelectedToy}" >
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Border Height="100" Width="186" BorderBrush="Black" BorderThickness="2" CornerRadius="10">
+                    <Border  Height="100" Width="186" BorderBrush="Black" BorderThickness="2" CornerRadius="10">
                         <StackPanel Orientation="Horizontal">
                             <Image Width="80" VerticalAlignment="Center" Source="{Binding Pic}"  />
                             <Label VerticalAlignment="Center" Width="120" FontSize="15" Content="{Binding  Name}" />
@@ -36,12 +36,12 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Border Width="350" Height="200" BorderBrush="Black" BorderThickness="2" CornerRadius="10">
+                    <Border Padding="5" Margin="5" Width="350" Height="200" BorderBrush="Black" BorderThickness="2" CornerRadius="10">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="60" />
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*" />
@@ -50,7 +50,7 @@
 
                             <Image VerticalAlignment="Center" Source="{Binding Pic}" />
                             <Label FontSize="18" Grid.Column="1" VerticalAlignment="Center" Content="{Binding Name}" />
-                            <Label FontSize="18" Grid.Column="2" VerticalAlignment="Center" Content="{Binding AgeRec}" />
+                            <Label FontSize="18" Grid.Column="2" VerticalAlignment="Center" Content="{Binding AgeRecommendation}" />
                             <Button Command="{Binding DataContext.BuyBtnClickedCmd, RelativeSource={RelativeSource AncestorType=ItemsControl}}" CommandParameter="{Binding}" Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="3">Buy</Button>
                         </Grid>
                     </Border>

@@ -65,8 +65,13 @@ namespace Burger_CodingDojo5.ViewModel
             MyToys.Add(new MyToyVM("My Lego", new BitmapImage(new Uri("Images/Lego.PNG", UriKind.Relative))));
             MyToys.Add(new MyToyVM("My Playmobil", new BitmapImage(new Uri("Images/Playmobil.PNG", UriKind.Relative))));
 
+            //Add Lego toys
             MyToys[0].AddToys(new MyToyVM("8+", "Imperial Ship", new BitmapImage(new Uri("Images/imperialShip.PNG", UriKind.Relative))));
+            MyToys[0].AddToys(new MyToyVM("10+", "AT AT Walker", new BitmapImage(new Uri("Images/atat.PNG", UriKind.Relative))));
+
+            //Add Playmobil toys
             MyToys[1].AddToys(new MyToyVM("4-10", "Pirate Ship", new BitmapImage(new Uri("Images/pirateShip.PNG", UriKind.Relative))));
+            MyToys[1].AddToys(new MyToyVM("6-12", "Big House", new BitmapImage(new Uri("Images/house.PNG", UriKind.Relative))));
         }
     }
 }
